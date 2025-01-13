@@ -9,15 +9,21 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { sideBarItemsData } from "../../data/global/SidebarData";
 import LogoPastel from "../../assets/logo_pastel.png";
+import { setToken } from "../../features/apiauth/apiAuthSlice";
+import { useDispatch } from "react-redux";
 
 interface SideBarProps {
   selectedItem: string;
 }
 
 export const SideBar: React.FC<SideBarProps> = ({ selectedItem }) => {
-  const handleLogout = () => {};
   const sideBarItems = sideBarItemsData;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    await dispatch(setToken(null));
+  };
 
   return (
     <Drawer
@@ -78,7 +84,6 @@ export const SideBar: React.FC<SideBarProps> = ({ selectedItem }) => {
         }}
       >
         <Link
-          to="#"
           onClick={handleLogout}
           style={{
             display: "flex",
