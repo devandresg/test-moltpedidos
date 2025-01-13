@@ -84,6 +84,7 @@ export const SideBar: React.FC<SideBarProps> = ({ selectedItem }) => {
         }}
       >
         <Link
+          to="#"
           onClick={handleLogout}
           style={{
             display: "flex",
